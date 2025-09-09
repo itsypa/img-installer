@@ -2,8 +2,8 @@
 mkdir -p openwrt
 
 REPO="wukongdaily/img-installer"
-TAG="2025-03-12"
-FILE_NAME="istoreos-24.10.1-2025060614-x86-64-squashfs-combined-efi.img.gz"
+TAG="2025-09-09"
+FILE_NAME="istoreos-24.10.2.img.gz"
 OUTPUT_PATH="openwrt/istoreos.img.gz"
 DOWNLOAD_URL=$(curl -s https://api.github.com/repos/$REPO/releases/tags/$TAG | jq -r '.assets[] | select(.name == "'"$FILE_NAME"'") | .browser_download_url')
 
