@@ -4,7 +4,7 @@ mkdir -p imm
 
 REPO="wukongdaily/AutoBuildImmortalWrt"
 TAG="img-installer"
-FILE_NAME="immortalwrt-24.10.3-x86-64-generic-squashfs-combined-efi.img.gz"
+FILE_NAME="immortalwrt-24.10.3.img.gz"
 OUTPUT_PATH="imm/immortalwrt.img.gz"
 
 DOWNLOAD_URL=$(curl -s https://api.github.com/repos/$REPO/releases/tags/$TAG | jq -r '.assets[] | select(.name == "'"$FILE_NAME"'") | .browser_download_url')
