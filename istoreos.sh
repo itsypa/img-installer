@@ -2,10 +2,10 @@
 mkdir -p openwrt
 
 REPO="wukongdaily/img-installer"
-TAG="2025-09-26"
-FILE_NAME="iStoreOS-24.10.3.img.gz"
+TAG="2025-10-24"
+FILE_NAME="iStoreOS-24.10.4.img.gz"
 OUTPUT_PATH="openwrt/istoreos.img.gz"
-DOWNLOAD_URL="https://github.com/itsypa/img-installer/releases/download/iStoreOS-24.10.3/iStoreOS-24.10.3.img.gz"
+DOWNLOAD_URL="https://github.com/itsypa/img-installer/releases/download/iStoreOS-24.10.4/iStoreOS-24.10.4.img.gz"
 
 if [[ -z "$DOWNLOAD_URL" ]]; then
   echo "错误：未找到文件 $FILE_NAME"
