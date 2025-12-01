@@ -2,7 +2,7 @@
 mkdir -p openwrt
 
 REPO="wukongdaily/img-installer"
-TAG="2025-10-24"
+TAG="2025-12-01"
 FILE_NAME="iStoreOS-24.10.4.img.gz"
 OUTPUT_PATH="openwrt/istoreos.img.gz"
 DOWNLOAD_URL="https://github.com/itsypa/img-installer/releases/download/iStoreOS-24.10.4/iStoreOS-24.10.4.img.gz"
