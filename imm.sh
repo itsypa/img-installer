@@ -2,14 +2,14 @@
 mkdir -p imm
 #https://github.com/wukongdaily/AutoBuildImmortalWrt/releases/download/Autobuild-x86-64/immortalwrt-24.10.0-x86-64-generic-squashfs-combined-efi.img.gz
 
-REPO="wukongdaily/AutoBuildImmortalWrt"
-TAG="img-installer"
-# FILE_NAME="immortalwrt-24.10.2-x86-64-generic-squashfs-combined-efi.img.gz"
+# 使用当前仓库的GitHub Releases作为源
+REPO="itsypa/img-installer"
+TAG="immortalwrt-24.10.4"
 FILE_NAME="immortalwrt-24.10.4.img.gz"
 OUTPUT_PATH="imm/immortalwrt.img.gz"
 
-# DOWNLOAD_URL=$(curl -s https://api.github.com/repos/$REPO/releases/tags/$TAG | jq -r '.assets[] | select(.name == "'"$FILE_NAME"'") | .browser_download_url')
-DOWNLOAD_URL="https://github.com/itsypa/img-installer/releases/download/immortalwrt-24.10.4/immortalwrt-24.10.4.img.gz"
+# 当前仓库的GitHub Releases下载地址
+DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${FILE_NAME}"
 # 此处可以替换op固件下载地址,但必须是 直链才可以,网盘那种地址是不行滴。举3个例子
 # 原版OpenWrt
 # DOWNLOAD_URL="https://downloads.openwrt.org/releases/24.10.3/targets/x86/64/openwrt-24.10.3-x86-64-generic-squashfs-combined-efi.img.gz"

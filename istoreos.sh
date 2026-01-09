@@ -1,11 +1,13 @@
 #!/bin/bash
 mkdir -p openwrt
 
-REPO="wukongdaily/img-installer"
-TAG="2025-12-01"
+# 使用当前仓库的GitHub Releases作为源
+REPO="itsypa/img-installer"
+TAG="iStoreOS-24.10.5"
 FILE_NAME="istoreos-24.10.5.img.gz"
 OUTPUT_PATH="openwrt/istoreos.img.gz"
-DOWNLOAD_URL="https://github.com/itsypa/img-installer/releases/download/iStoreOS-24.10.5/istoreos-24.10.5.img.gz"
+# 当前仓库的GitHub Releases下载地址
+DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${FILE_NAME}"
 
 if [[ -z "$DOWNLOAD_URL" ]]; then
   echo "错误：未找到文件 $FILE_NAME"
