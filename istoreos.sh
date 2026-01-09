@@ -18,10 +18,16 @@ curl -L -o "$OUTPUT_PATH" "$DOWNLOAD_URL"
 
 if [[ $? -eq 0 ]]; then
   echo "下载istoreos成功!"
+  file openwrt/istoreos.img.gz
   echo "正在解压为:istoreos.img"
   gzip -d openwrt/istoreos.img.gz
-  ls -lh openwrt/
-  echo "准备合成 istoreos 安装器"
+  if [[ $? -eq 0 ]]; then
+    ls -lh openwrt/
+    echo "准备合成 istoreos 安装器"
+  else
+    echo "解压失败！"
+    exit 1
+  fi
 else
   echo "下载失败！"
   exit 1

@@ -60,9 +60,17 @@ echo Create directories that will contain files for our live environment files a
 mkdir -p $HOME/LIVE_BOOT/{staging/{EFI/boot,boot/grub/x86_64-efi,isolinux,live},tmp}
 
 echo Compress the chroot environment into a Squash filesystem.
-cp /mnt/istoreos.img ${HOME}/LIVE_BOOT/chroot/mnt/
-ls ${HOME}/LIVE_BOOT/chroot/mnt/
-mksquashfs $HOME/LIVE_BOOT/chroot $HOME/LIVE_BOOT/staging/live/filesystem.squashfs -e boot
+# Check if istoreos.img is a file
+if [ -f /mnt/istoreos.img ]; then
+    cp /mnt/istoreos.img ${HOME}/LIVE_BOOT/chroot/mnt/
+    ls -lh ${HOME}/LIVE_BOOT/chroot/mnt/
+    mksquashfs $HOME/LIVE_BOOT/chroot $HOME/LIVE_BOOT/staging/live/filesystem.squashfs -e boot
+else
+    echo "Error: /mnt/istoreos.img is not a file!"
+    echo "Current content of /mnt/ directory:"
+    ls -la /mnt/
+    exit 1
+fi
 
 echo Copy kernel and initrd
 cp -v $HOME/LIVE_BOOT/chroot/boot/vmlinuz-* $HOME/LIVE_BOOT/staging/live/vmlinuz
