@@ -113,12 +113,18 @@ fi
 
 # 执行解压操作（无论是下载的还是本地的文件）
 echo "正在解压为:immortalwrt.img"
-gzip -d imm/immortalwrt.img.gz
-if [[ $? -eq 0 ]]; then
+
+# 使用gzip解压，并捕获输出
+gzip_output=$(gzip -d imm/immortalwrt.img.gz 2>&1)
+gzip_exit_code=$?
+
+# 检查解压结果，允许"trailing garbage ignored"警告
+if [[ $gzip_exit_code -eq 0 ]] || [[ "$gzip_output" == *"decompression OK, trailing garbage ignored"* ]]; then
+  echo "解压成功！$gzip_output"
   ls -lh imm/
   echo "准备合成 immortalwrt 安装器"
 else
-  echo "解压失败！"
+  echo "解压失败！$gzip_output"
   exit 1
 fi
 
