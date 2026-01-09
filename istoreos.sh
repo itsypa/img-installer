@@ -6,8 +6,29 @@ REPO="itsypa/img-installer"
 TAG="iStoreOS-24.10.5"
 FILE_NAME="istoreos-24.10.5.img.gz"
 OUTPUT_PATH="openwrt/istoreos.img.gz"
-# 当前仓库的GitHub Releases下载地址
-DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${FILE_NAME}"
+
+# 尝试从GitHub API获取最新的发布信息，自动查找匹配的文件
+# 首先尝试使用API获取最新的发布
+LATEST_RELEASE=$(curl -s https://api.github.com/repos/${REPO}/releases/latest)
+
+# 检查是否成功获取最新发布
+if [[ $? -eq 0 ]]; then
+  # 尝试查找匹配的文件
+  DOWNLOAD_URL=$(echo ${LATEST_RELEASE} | jq -r '.assets[] | select(.name | test("istoreos.*\.img\.gz$")) | .browser_download_url' | head -1)
+  
+  # 如果没有找到匹配的文件，尝试使用指定的TAG
+  if [[ -z "$DOWNLOAD_URL" ]]; then
+    echo "从最新发布中未找到匹配的iStoreOS镜像文件，尝试使用指定的TAG: ${TAG}"
+    SPECIFIC_RELEASE=$(curl -s https://api.github.com/repos/${REPO}/releases/tags/${TAG})
+    DOWNLOAD_URL=$(echo ${SPECIFIC_RELEASE} | jq -r '.assets[] | select(.name == "'"$FILE_NAME"'") | .browser_download_url')
+  fi
+fi
+
+# 如果API调用失败或未找到文件，使用硬编码URL作为备选
+if [[ -z "$DOWNLOAD_URL" ]]; then
+  echo "从GitHub API未找到文件，使用硬编码URL作为备选"
+  DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${FILE_NAME}"
+fi
 
 if [[ -z "$DOWNLOAD_URL" ]]; then
   echo "错误：未找到文件 $FILE_NAME"
