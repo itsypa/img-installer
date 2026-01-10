@@ -13,4 +13,4 @@
 - 其中eth0为WAN 其余网口均为LAN (自动将剩余其他网口桥接 无需手动)
 - iStoreOS终端中使用 `quickstart` 可查看网口信息 
 - 默认情况下 只要你知道wan口分配的ip 就能访问web页 前提是你在`quickstart`  中启用了 `ALLOW WAN ACCESS`
-- 出处：https://fw0.koolcenter.com/iStoreOS/x86_64_efi/istoreos-22.03.7-2024122712-x86-64-squashfs-combined-efi.img.gz
+- 出处：https://site.istoreos.com/firmware/download?devicename=x86_64&firmware=iStoreOS
