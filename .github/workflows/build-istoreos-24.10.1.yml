@@ -1,4 +1,4 @@
-name: "Build iStoreOS Installer ISO"
+name: "Build iStoreOS 24.10.1 Installer ISO"
 
 on:
  workflow_dispatch:
