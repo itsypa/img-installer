@@ -5,7 +5,7 @@ show_menu() {
     echo "====================================="
     echo "  Immortalwrt Installer by itsypa"
     echo "====================================="
-    echo "1. Install Immortalwrt (2GB"
+    echo "1. Install Immortalwrt"
     echo "0. Quit"
     echo "====================================="
 }
