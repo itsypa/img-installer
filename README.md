@@ -1,5 +1,5 @@
 # img-installer
-它是一个基于Debian Live系统的img镜像安装器。采用github action构建打包。目前实现了在x86-64设备上 快速安装armbian和openwrt的功能。 
+它是一个基于Debian Live系统的img镜像安装器。采用github action构建打包。目前实现了在x86-64设备上快速安装ImmortalWrt和iStoreOS的功能。
 ![1](https://github.com/user-attachments/assets/6635cb83-6164-4be7-ab1e-fff421b3dc2f)
 
 
@@ -26,21 +26,34 @@
 
 
 ## 项目说明和相关Feature
-1. 此项目生成的ISO同时 支持物理机 和 虚拟机的安装
-2. 此项目生成的安装器用于各种常见的img格式嵌入式系统:`OpenWrt`、`Armbian`、`HAOS`、`LibreELEC`等
-3. 其中OpenWrt分为istoreos、immortalwrt、EzOpWrt、eSirOpenWrt 安装器。实际上安装任意一种即可，因为换固件可在网页里随时换。
-4. istoreos 在虚拟机上并没有安装器,因此本项目算是一种补充。（物理机安装istoreos就可以忽略本项目了）
-5. armbian 安装器 目前构建2种 一种是minimal 一种是标准版 较低配置的x86-64设备建议使用minimal 比如（wyse3040瘦客户机）
-6. HAOS可自定义下载地址,默认构建HAOS 15.0 `haos_generic-x86-64-15.0.img.xz`
-7. 支持自定义openwrt镜像生成iso安装器,其中openwrt镜像的压缩包格式是`img.gz` `img.zip` `img.xz`三种
+1. 此项目生成的ISO同时支持物理机和虚拟机的安装
+2. 此项目生成的安装器用于特定的img格式嵌入式系统：`ImmortalWrt`、`iStoreOS`
+3. 通过运行项目根目录的脚本可以构建对应的安装器ISO
+4. 支持自定义img镜像生成iso安装器,镜像压缩包格式为`img.gz`
 
 
 
 ## ISO自动制作流程
-本项目也是基于开源项目[debian-live](https://github.com/dpowers86/debian-live)制作.因此我的代码也是全程开源 MIT协议不变。
-1. 首先构建一个debian live系统 该系统带EFI引导。
-2. 在该系统内融入我们需要的img镜像和自己制作的dd写盘脚本。一起打包到filesystem.squashfs文件系统中。该过程包含了压缩,从而保证了最终的体积较小。
-3. 最后将新的squashfs文件和相关文件一起打包为ISO
+本项目基于开源项目[debian-live](https://github.com/dpowers86/debian-live)制作，代码采用MIT协议开源。
+
+### 本地构建流程
+1. 运行根目录的`imm.sh`或`istoreos.sh`脚本
+2. 脚本会从GitHub Releases下载对应的img.gz镜像文件
+3. 使用Docker运行debian容器，挂载必要的卷
+4. 在容器内执行对应的build.sh脚本，构建流程如下：
+   - 安装构建依赖
+   - 使用debootstrap创建Debian chroot环境
+   - 复制配置文件和installChroot.sh脚本到chroot环境
+   - 挂载proc、dev、sys文件系统
+   - 在chroot环境内执行installChroot.sh，安装必要软件包
+   - 构建SquashFS文件系统
+   - 配置GRUB引导
+   - 生成最终的ISO文件
+5. ISO文件输出到output目录
+
+### GitHub Actions构建
+- 项目配置了GitHub Workflow，支持手动触发构建
+- 构建完成后自动发布ISO文件到GitHub Releases
 
 ## 项目参考
 - https://willhaley.com/blog/custom-debian-live-environment/
@@ -50,10 +63,4 @@
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=wukongdaily/armbian-installer&type=Date)](https://star-history.com/#wukongdaily/armbian-installer&Date)
-
-
-
-## ❤️赞助作者 ⬇️⬇️
-#### 项目开发不易 感谢您的支持鼓励。<br>
-[![点击这里赞助我](https://img.shields.io/badge/点击这里赞助我-支持作者的项目-orange?logo=github)](https://wkdaily.cpolar.cn/01) <br>
+[![Star History Chart](https://api.star-history.com/svg?repos=itsypa/img-installer&type=Date)](https://star-history.com/#itsypa/img-installer&Date)
