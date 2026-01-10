@@ -13,17 +13,14 @@
 - 【第三集 Hyper-V、绿联NAS虚拟机、飞牛虚拟机使用教程】 https://www.bilibili.com/video/BV1BoZVYsE7b
 - 【第四集 PVE虚拟机里如何使用img安装器】https://www.bilibili.com/video/BV1Rx5Qz4EZB
 
-6. 具体的操作方法是:在安装器所在系统里输入 `ddd` 命令 方可调出安装菜单
+5. 具体的操作方法是:在安装器所在系统里输入 `ddd` 命令 方可调出安装菜单
    ![localhost lan - VMware ESXi 2025-03-20 10-14-45](https://github.com/user-attachments/assets/ddae80a0-9ff5-4d63-83b5-1f49da18b008)
-
 
 ## 项目说明和相关Feature
 1. 此项目生成的ISO同时支持物理机和虚拟机的安装
 2. 此项目生成的安装器用于特定的img格式嵌入式系统：`ImmortalWrt`、`iStoreOS`
 3. 通过运行项目根目录的脚本可以构建对应的安装器ISO
 4. 支持自定义img镜像生成iso安装器,镜像压缩包格式为`img.gz`
-
-
 
 ## ISO自动制作流程
 本项目基于开源项目[debian-live](https://github.com/dpowers86/debian-live)制作，代码采用MIT协议开源。
@@ -52,7 +49,4 @@
 - https://github.com/dpowers86/debian-live
 - https://github.com/sirpdboy/openwrt/releases
 - https://github.com/esirplayground
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=itsypa/img-installer&type=Date)](https://star-history.com/#itsypa/img-installer&Date)
+-https://github.com/wukongdaily/img-installer
