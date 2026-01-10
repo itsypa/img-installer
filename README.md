@@ -47,6 +47,4 @@
 ## 项目参考
 - https://willhaley.com/blog/custom-debian-live-environment/
 - https://github.com/dpowers86/debian-live
-- https://github.com/sirpdboy/openwrt/releases
-- https://github.com/esirplayground
 - https://github.com/wukongdaily/img-installer
