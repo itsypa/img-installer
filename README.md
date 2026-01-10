@@ -49,4 +49,4 @@
 - https://github.com/dpowers86/debian-live
 - https://github.com/sirpdboy/openwrt/releases
 - https://github.com/esirplayground
--https://github.com/wukongdaily/img-installer
+- https://github.com/wukongdaily/img-installer
