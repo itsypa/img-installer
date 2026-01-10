@@ -26,7 +26,7 @@ debootstrap --arch=amd64 --variant=minbase buster $HOME/LIVE_BOOT/chroot http://
 
 echo Copy supporting documents into the chroot
 cp -v /supportFiles/installChroot.sh $HOME/LIVE_BOOT/chroot/installChroot.sh
-cp -v /supportFiles/istoreos/ddd $HOME/LIVE_BOOT/chroot/usr/bin/ddd
+cp -v /supportFiles/esirplayground/ddd $HOME/LIVE_BOOT/chroot/usr/bin/ddd
 chmod +x $HOME/LIVE_BOOT/chroot/usr/bin/ddd
 cp -v /supportFiles/sources.list $HOME/LIVE_BOOT/chroot/etc/apt/sources.list
 
@@ -60,7 +60,7 @@ echo Create directories that will contain files for our live environment files a
 mkdir -p $HOME/LIVE_BOOT/{staging/{EFI/boot,boot/grub/x86_64-efi,isolinux,live},tmp}
 
 echo Compress the chroot environment into a Squash filesystem.
-cp /mnt/istoreos.img ${HOME}/LIVE_BOOT/chroot/mnt/
+cp /mnt/esiropenwrt.img ${HOME}/LIVE_BOOT/chroot/mnt/
 ls ${HOME}/LIVE_BOOT/chroot/mnt/
 mksquashfs $HOME/LIVE_BOOT/chroot $HOME/LIVE_BOOT/staging/live/filesystem.squashfs -e boot
 
@@ -69,8 +69,8 @@ cp -v $HOME/LIVE_BOOT/chroot/boot/vmlinuz-* $HOME/LIVE_BOOT/staging/live/vmlinuz
 cp -v $HOME/LIVE_BOOT/chroot/boot/initrd.img-* $HOME/LIVE_BOOT/staging/live/initrd
 
 echo Copy boot config files
-cp -v /supportFiles/istoreos/isolinux.cfg $HOME/LIVE_BOOT/staging/isolinux/isolinux.cfg
-cp -v /supportFiles/istoreos/grub.cfg $HOME/LIVE_BOOT/staging/boot/grub/grub.cfg
+cp -v /supportFiles/esirplayground/isolinux.cfg $HOME/LIVE_BOOT/staging/isolinux/isolinux.cfg
+cp -v /supportFiles/esirplayground/grub.cfg $HOME/LIVE_BOOT/staging/boot/grub/grub.cfg
 cp -v /supportFiles/grub-standalone.cfg $HOME/LIVE_BOOT/tmp/grub-standalone.cfg
 touch $HOME/LIVE_BOOT/staging/DEBIAN_CUSTOM
 
@@ -111,6 +111,6 @@ xorriso \
     "${HOME}/LIVE_BOOT/staging"
 
 echo Copy output
-cp -v $HOME/LIVE_BOOT/debian-custom.iso /output/istoreos-installer-x86_64.iso
-chmod -v 666 /output/istoreos-installer-x86_64.iso
+cp -v $HOME/LIVE_BOOT/debian-custom.iso /output/esiropenwrt-installer-x86_64.iso
+chmod -v 666 /output/esiropenwrt-installer-x86_64.iso
 ls -lah /output

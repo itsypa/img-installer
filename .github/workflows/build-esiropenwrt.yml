@@ -1,4 +1,4 @@
-name: "Build ImmortalWrt Installer ISO"
+name: "Build eSirOpenWrt Installer ISO"
 
 on:
  workflow_dispatch:
@@ -18,20 +18,20 @@ jobs:
       
       - name: Set executable permissions
         run: |
-          chmod +x ${{ github.workspace }}/imm.sh
-          chmod +x ${{ github.workspace }}/supportFiles/immortalwrt/build.sh
+          chmod +x ${{ github.workspace }}/esir.sh
+          chmod +x ${{ github.workspace }}/supportFiles/esirplayground/build.sh
 
       - name: "Build Image"
         run: |
-          ./imm.sh
+          ./esir.sh
       
       - name: "Publish"
         uses: softprops/action-gh-release@v2.2.1
         with:
-          tag_name: "ImmortalWrt-Installer-x86_64-ISO"
-          body_path: ${{ github.workspace }}/supportFiles/immortalwrt/info.md
+          tag_name: "eSirOpenWrt-Installer-x86_64-ISO"
+          body_path: ${{ github.workspace }}/supportFiles/esirplayground/info.md
           files: |
-            output/immortalwrt-installer-x86_64.iso
+            output/esiropenwrt-installer-x86_64.iso
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
