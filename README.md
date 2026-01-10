@@ -1,13 +1,5 @@
 # img-installer
-它是一个基于Debian Live系统的img镜像安装器。采用github action构建打包。目前实现了在x86-64设备上快速安装ImmortalWrt和iStoreOS的功能。
-![1](https://github.com/user-attachments/assets/6635cb83-6164-4be7-ab1e-fff421b3dc2f)
-
-
-## 背景解读
-- 嵌入式设备的系统通常采用img格式,一般出现在ARM设备中，安装方式通常是线刷、烧录SD卡等方式。
-- 但近年来，openwrt 和 armbian 也逐渐兼容适配通用型x86-64设备,随着软路由和NAS虚拟机逐渐普及。
-- 显然针对ARM设备的烧录方法 不太适合x86-64设备（含虚拟机）。无论是借助PE还是借助dd 都需要传递固件文件。显得低效和复杂。
-- 如何让openwrt/armbian 等小众x86-64的Linux系统 像安装普通系统一样简单呢 希望本项目给你一个满意的答案。
+基于Debian Live系统的img镜像安装器，实现了在x86-64设备上快速安装ImmortalWrt和iStoreOS的功能。
 
 ## 使用方式
 [图文教学](https://club.fnnas.com/forum.php?mod=viewthread&tid=26293)
